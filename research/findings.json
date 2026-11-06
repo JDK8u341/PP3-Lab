@@ -1,0 +1,103 @@
+{
+  "created_on": "2026-11-07",
+  "baseline": {
+    "repository": "https://github.com/JDK8u341/PP3",
+    "commit": "aceb4c532cf475f7b69fb623affc81c9f70e8c48",
+    "direct_addressing": false,
+    "op_map": "std_register"
+  },
+  "scope": "本仓库构造的充分条件、证明、示例和有限测试，不声称全局新颖性或语言能力全景已完成",
+  "findings": [
+    {
+      "id": "R01",
+      "title": "函数图与有限图高写入定理",
+      "status": "proved",
+      "document": "docs/01-graph-model.md",
+      "examples": [
+        "graph-write"
+      ],
+      "scope": "测试小有根图与反例；证明要求先清零 0 槽以及旧/新载荷满足有根路径界。"
+    },
+    {
+      "id": "R02",
+      "title": "自环填充统一写入和读改写",
+      "status": "proved",
+      "document": "docs/01-graph-model.md",
+      "examples": [
+        "graph-write"
+      ],
+      "scope": "允许标记图存在时保留自然数标量不变量，包含零载荷。"
+    },
+    {
+      "id": "R03",
+      "title": "数值地址稀疏集合",
+      "status": "proved",
+      "document": "docs/02-address-marking.md",
+      "examples": [
+        "sparse-set"
+      ],
+      "scope": "自然数键映射到 key+1；标记指向永久零锚点；没有值域枚举。"
+    },
+    {
+      "id": "R04",
+      "title": "可恢复地址标记等值",
+      "status": "proved",
+      "document": "docs/02-address-marking.md",
+      "examples": [
+        "equality"
+      ],
+      "scope": "固定分派上界，恢复原集合；宿主时间与物理字典占用不能称常量。"
+    },
+    {
+      "id": "R05",
+      "title": "保留输入的自然数顺序比较",
+      "status": "proved",
+      "document": "docs/03-comparison.md",
+      "examples": [
+        "comparison"
+      ],
+      "scope": "先快速等值，非等时同步抵消；O(min(a,b)+1) 分派上界。"
+    },
+    {
+      "id": "R06",
+      "title": "符号/幅值编码顺序比较",
+      "status": "proved",
+      "document": "docs/03-comparison.md",
+      "examples": [
+        "signed-comparison"
+      ],
+      "scope": "按编码输入；未完成任意裸负整数输入的通用无枚举解码。"
+    },
+    {
+      "id": "R07",
+      "title": "交错双带和可反向游标",
+      "status": "proved",
+      "document": "docs/04-tapes-and-bits.md",
+      "examples": [
+        "binary-add",
+        "comparison-sort"
+      ],
+      "scope": "两带按地址奇偶分离，边界由调用方保证，游标采用深度 5。"
+    },
+    {
+      "id": "R08",
+      "title": "按位数线性的二进制全加器",
+      "status": "proved",
+      "document": "docs/04-tapes-and-bits.md",
+      "examples": [
+        "binary-add"
+      ],
+      "scope": "固定位宽合法文本输入；1024 位验证，不等同于完整大整数库。"
+    },
+    {
+      "id": "R09",
+      "title": "非分桶的比较排序",
+      "status": "proved",
+      "document": "docs/03-comparison.md",
+      "examples": [
+        "comparison-sort"
+      ],
+      "scope": "自然数域上的相邻比较交换，最大值不限制在字节域。"
+    }
+  ]
+}

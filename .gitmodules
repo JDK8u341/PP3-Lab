@@ -1,0 +1,3 @@
+[submodule "vendor/PP3"]
+	path = vendor/PP3
+	url = https://github.com/JDK8u341/PP3.git

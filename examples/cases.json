@@ -1,0 +1,86 @@
+{
+  "graph-write": [
+    {
+      "name": "已标记地址和零载荷",
+      "stdin": "0\n0\n",
+      "stdout": "0\n1\n"
+    },
+    {
+      "name": "数据值碰到集合键地址",
+      "stdin": "6\n7\n",
+      "stdout": "7\n1\n"
+    }
+  ],
+  "equality": [
+    {
+      "name": "相等零",
+      "stdin": "0\n0\n",
+      "stdout": "1\n"
+    },
+    {
+      "name": "相邻不等",
+      "stdin": "999999\n1000000\n",
+      "stdout": "0\n"
+    }
+  ],
+  "sparse-set": [
+    {
+      "name": "稀疏成员查询",
+      "stdin": "3\n0\n256\n9999\n5\n0\n1\n256\n9999\n10000\n",
+      "stdout": "1\n0\n1\n1\n0\n"
+    }
+  ],
+  "comparison": [
+    {
+      "name": "超过字节范围",
+      "stdin": "256\n300\n",
+      "stdout": "1\n0\n0\n"
+    },
+    {
+      "name": "相等",
+      "stdin": "12\n12\n",
+      "stdout": "0\n1\n0\n"
+    }
+  ],
+  "signed-comparison": [
+    {
+      "name": "两个负数",
+      "stdin": "1\n5\n1\n2\n",
+      "stdout": "1\n0\n0\n"
+    },
+    {
+      "name": "负零规范化",
+      "stdin": "1\n0\n0\n0\n",
+      "stdout": "0\n1\n0\n"
+    }
+  ],
+  "comparison-sort": [
+    {
+      "name": "通用比较排序",
+      "stdin": "6\n5000\n0\n256\n2\n5000\n1\n",
+      "stdout": "0\n1\n2\n256\n5000\n5000\n"
+    },
+    {
+      "name": "空序列",
+      "stdin": "0\n",
+      "stdout": ""
+    }
+  ],
+  "binary-add": [
+    {
+      "name": "全长进位",
+      "stdin": "4\n1111\n0001\n",
+      "stdout": "10000\n"
+    },
+    {
+      "name": "固定宽度零",
+      "stdin": "4\n0000\n0000\n",
+      "stdout": "00000\n"
+    },
+    {
+      "name": "空位宽",
+      "stdin": "0\n\n\n",
+      "stdout": "0\n"
+    }
+  ]
+}

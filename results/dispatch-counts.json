@@ -1,0 +1,60 @@
+{
+  "metric": "原版 Runtime.run 对每个 handler（包括 LoopBlock）的实际分派次数；不计循环条件求值次数及各 handler 内部成本",
+  "limitations": "不是 CPU 指令、内存访问次数或真实耗时；Python 大整数、字典及输入输出成本不固定",
+  "equality": [
+    {
+      "decimal_digits": 1,
+      "equal_dispatches": 115,
+      "unequal_dispatches": 115
+    },
+    {
+      "decimal_digits": 10,
+      "equal_dispatches": 115,
+      "unequal_dispatches": 115
+    },
+    {
+      "decimal_digits": 100,
+      "equal_dispatches": 115,
+      "unequal_dispatches": 115
+    },
+    {
+      "decimal_digits": 1000,
+      "equal_dispatches": 115,
+      "unequal_dispatches": 115
+    }
+  ],
+  "binary_add": [
+    {
+      "bit_width": 8,
+      "dispatches": 3724
+    },
+    {
+      "bit_width": 16,
+      "dispatches": 7348
+    },
+    {
+      "bit_width": 32,
+      "dispatches": 14596
+    },
+    {
+      "bit_width": 64,
+      "dispatches": 29092
+    },
+    {
+      "bit_width": 128,
+      "dispatches": 58084
+    },
+    {
+      "bit_width": 256,
+      "dispatches": 116068
+    },
+    {
+      "bit_width": 512,
+      "dispatches": 232036
+    },
+    {
+      "bit_width": 1024,
+      "dispatches": 463972
+    }
+  ]
+}
