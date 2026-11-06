@@ -1,0 +1,29 @@
+{
+  "metric": "原版 Runtime.run 每次 handler 分派位置的命中次数；并非 CPU 指令数或真实耗时",
+  "record_layout": "每节点跨度4；测试使用 -2000 起始的数据区，与普通槽隔离",
+  "list_sizes": [
+    1,
+    8,
+    64,
+    256
+  ],
+  "value_chain_append_with_input": [
+    3,
+    3,
+    3,
+    3
+  ],
+  "record_tail_append": [
+    49,
+    49,
+    49,
+    49
+  ],
+  "record_concat_ownership_transfer": [
+    69,
+    69,
+    69,
+    69
+  ],
+  "notes": "计数对象是孤立的追加/拼接操作，不含列表构造。空记录队列追加走不同分支，故不与非空追加合并比较。宿主字典、大整数与分支成本不由该计数表示。"
+}

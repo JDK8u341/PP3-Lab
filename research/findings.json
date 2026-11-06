@@ -98,6 +98,38 @@
         "comparison-sort"
       ],
       "scope": "自然数域上的相邻比较交换，最大值不限制在字节域。"
+    },
+    {
+      "id": "R10",
+      "title": "局部路由伪链表与重复值反例",
+      "status": "proved",
+      "document": "docs/07-linked-records.md",
+      "examples": ["value-chain"],
+      "scope": "原始方案 O(1) 追加依赖值互异且非零；重复值会合并身份并形成环，-1 是哨兵。"
+    },
+    {
+      "id": "R11",
+      "title": "独立记录身份、定长字段与空闲链",
+      "status": "proved",
+      "document": "docs/07-linked-records.md",
+      "examples": ["record-queue", "record-stack"],
+      "scope": "负地址顺序分配、显式头/幅值/符号/后继；载荷为符号/幅值编码，回收需先摘链且禁止重复释放。"
+    },
+    {
+      "id": "R12",
+      "title": "头尾路由、常量分派拼接与所有权转移",
+      "status": "proved",
+      "document": "docs/07-linked-records.md",
+      "examples": ["record-splice"],
+      "scope": "拼接分派数不随链长增长；前提是同一堆、链表互不重叠并转移源所有权。"
+    },
+    {
+      "id": "R13",
+      "title": "用已知基数遍历有向环",
+      "status": "proved",
+      "document": "docs/07-linked-records.md",
+      "examples": ["record-ring"],
+      "scope": "先数节点再闭环，恰好走 n 次；不使用零终止，但更改拓扑后需重新验证计数。"
     }
   ]
 }

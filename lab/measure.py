@@ -9,7 +9,7 @@ from unittest.mock import patch
 from lab.runtime import Runtime
 
 
-def dispatch_count(ir, stdin):
+def dispatch_count(ir, stdin, runtime=None):
     lines, start = inspect.getsourcelines(Runtime.run)
     dispatch_line = start + next(index for index, line in enumerate(lines) if line.strip() == "if h.TYPE == HandlerType.Mem:")
     count = 0
@@ -27,7 +27,8 @@ def dispatch_count(ir, stdin):
     try:
         with patch("sys.stdin", StringIO(stdin)), redirect_stdout(StringIO()):
             sys.settrace(trace)
-            Runtime(can_direct_addressing=False).run(ir)
+            rt = runtime if runtime is not None else Runtime(can_direct_addressing=False)
+            rt.run(ir)
     finally:
         sys.settrace(previous)
     return count

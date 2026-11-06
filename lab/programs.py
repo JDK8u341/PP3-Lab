@@ -1,6 +1,7 @@
 """各个研究发现的纯 PP3 示例；不包含输入值域查表。"""
 
 from lab.core import Tape, seq
+from lab.links import PROGRAMS as LINK_PROGRAMS
 
 
 def graph_write(m):
@@ -96,4 +97,5 @@ PROGRAMS = {
     "signed-comparison": signed_comparison,
     "comparison-sort": comparison_sort,
     "binary-add": binary_add,
+    **LINK_PROGRAMS,
 }
