@@ -17,14 +17,20 @@
 | R07 | 两条交错负地址带与多个游标 | 顺序、反向访问，两个带之间不冲突 |
 | R08 | 逐位全加器实现按位数线性的二进制加法 | 已验证 1024 位和全长进位；输出固定位宽 |
 | R09 | 基于比较的自然数冒泡排序 | 不分桶、不限于 0..255；不是高性能大数排序 |
+| R10 | 用户值链的局部路由：两条指令追加 | 输入值互异非零，排除头哨兵 -1 |
+| R11 | 零头记录、独立节点身份与空闲链 | 重复、零和符号/幅值载荷；分配及复用不扫描 |
+| R12 | 头尾引用实现常量分派拼接 | 同堆、互不重叠的有限链；转移源链所有权 |
+| R13 | 显式后继环和计数遍历 | 逻辑后继可成环，原始寻址仍经零头，走固定 n 次 |
 
-完整记录见 [研究目录](research/findings.json)、[图模型](docs/01-graph-model.md)、[集合与等值](docs/02-address-marking.md)、[比较与排序](docs/03-comparison.md)、[双带与二进制](docs/04-tapes-and-bits.md)。
+完整记录见 [研究目录](research/findings.json)、[图模型](docs/01-graph-model.md)、[集合与等值](docs/02-address-marking.md)、[比较与排序](docs/03-comparison.md)、[双带与二进制](docs/04-tapes-and-bits.md)、[从用户值链到记录堆](docs/07-linked-records.md)。R10 的两条指令构造来自仓库维护者在对话中提供的伪链表。
 
 ## 可重复结果
 
 - 等值示例读取 1、10、100、1000 位十进制自然数时，测量样例均为 **115 次分派**，相等与相邻不等均如此。这是整个示例的计数，不是单个 `equal()` 宏的计数。
 - 二进制加法在全长进位样例上，8..1024 位的测量符合 **453w+100 次分派**。1024 位为 463972 次；这是该类输入的测量公式，不是所有输入的精确成本公式。
 - 小图验证覆盖三个非零结点的全部 16 个有根函数图及每图 16 个写入组合；另保存了正地址自环导致赋值失败的最小反例。
+- 长度为 1、8、64、256 的样本上，原值链追加含输入为 3 次分派，非空记录尾追加为 49 次，所有权拼接为 69 次；测量不含建链，详见 [链操作结果](results/link-dispatch-counts.json)。
+- 全库 35 项测试，包含 120 次交错追加/回收的模型对照，以及原值链重复节点导致成环的有限反例验证。
 
 原始数据见 [dispatch-counts.json](results/dispatch-counts.json)，计数方法与性能边界见 [验证与成本模型](docs/06-validation.md)。没有把分派次数等同于机器指令、内存访问次数或 CPU 耗时。
 
@@ -36,8 +42,11 @@ cd PP3-Lab
 python tools/run.py equality
 python tools/run.py comparison-sort
 python tools/run.py binary-add
+python tools/run.py record-queue
+python tools/run.py record-splice
 python -B -m unittest discover -v
 python tools/measure.py
+python tools/measure_links.py
 ```
 
 各示例精确输入输出和合法定义域见 [examples/README.md](examples/README.md)。它们是研究构造，不是为任意非法输入设计的命令行产品：例如自然数输入不得为负，二进制输入必须遵守位宽与行结构。
@@ -56,7 +65,7 @@ Runtime(can_direct_addressing=False)
 ```text
 docs/       中文推导、反例、性能与边界
 research/   发现目录及后续研究清单
-examples/   七份纯 DSL 示例、精确输入输出样例
+examples/   十二份纯 DSL 示例、精确输入输出样例
 lab/        静态宏、程序构造、原版运行器入口
 tools/      生成、执行和计数命令
 tests/      性质、反例、接口和示例测试

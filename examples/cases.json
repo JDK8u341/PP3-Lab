@@ -82,5 +82,70 @@
       "stdin": "0\n\n\n",
       "stdout": "0\n"
     }
+  ],
+  "value-chain": [
+    {
+      "name": "互异输入值作为节点地址",
+      "stdin": "5\n6\n7\n0\n",
+      "stdout": "5\n6\n7\n"
+    },
+    {
+      "name": "非保留负地址节点",
+      "stdin": "-2\n-3\n0\n",
+      "stdout": "-2\n-3\n"
+    },
+    {
+      "name": "空值链",
+      "stdin": "0\n",
+      "stdout": ""
+    }
+  ],
+  "record-queue": [
+    {
+      "name": "重复载荷、零与符号编码",
+      "stdin": "5\n0\n5\n0\n5\n0\n0\n1\n1\n1\n2\n",
+      "stdout": "5\n5\n0\n-1\n-2\n"
+    },
+    {
+      "name": "空队列",
+      "stdin": "0\n",
+      "stdout": ""
+    }
+  ],
+  "record-stack": [
+    {
+      "name": "后进先出",
+      "stdin": "3\n0\n1\n0\n2\n0\n3\n",
+      "stdout": "3\n2\n1\n"
+    },
+    {
+      "name": "空栈",
+      "stdin": "0\n",
+      "stdout": ""
+    }
+  ],
+  "record-splice": [
+    {
+      "name": "两链拼接及所有权转移",
+      "stdin": "2\n0\n5\n0\n5\n2\n0\n0\n1\n7\n",
+      "stdout": "5\n5\n0\n-7\n"
+    },
+    {
+      "name": "拼接两个空链",
+      "stdin": "0\n0\n",
+      "stdout": ""
+    }
+  ],
+  "record-ring": [
+    {
+      "name": "有向环的定次数遍历",
+      "stdin": "3\n0\n5\n0\n5\n0\n0\n",
+      "stdout": "5\n5\n0\n"
+    },
+    {
+      "name": "空环",
+      "stdin": "0\n",
+      "stdout": ""
+    }
   ]
 }
